@@ -60,6 +60,17 @@
   </head>
   <body>
     <div id="root"></div>
+    <form name="business-enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="business-enquiry" />
+      <input type="hidden" name="bot-field" />
+      <input type="text" name="name" />
+      <input type="text" name="company" />
+      <input type="tel" name="phone" />
+      <input type="email" name="email" />
+      <input type="text" name="product" />
+      <input type="text" name="quantity" />
+      <textarea name="message"></textarea>
+    </form>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
