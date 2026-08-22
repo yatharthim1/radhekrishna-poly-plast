@@ -1,4 +1,4 @@
-import waImg2 from '../assets/WhatsApp Image 2026-08-22 at 5.47.45 PM (1).jpeg';
+import aboutFactoryImage from '../assets/about-factory-gps.jpeg';
 
 export default function About() {
   return (
@@ -57,12 +57,12 @@ export default function About() {
             </div>
           </div>
 
-          {/* Image Placeholder */}
+          {/* Factory image */}
           <div>
             <div className="relative h-96 bg-gradient-to-br from-gray-200 to-gray-300 rounded-xl overflow-hidden shadow-lg">
               <img
-                src={waImg2}
-                alt="Radhekrishna Poly Plast - Fabric rolls storage and inventory management"
+                src={aboutFactoryImage}
+                alt="Radhekrishna Poly Plast factory and fabric bag storage facility in Patna, Bihar"
                 className="w-full h-full object-cover"
               />
             </div>

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import rkppLogo from '../assets/rkpp-logo.png';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -16,9 +17,16 @@ export default function Header() {
       <nav className="container-max flex justify-between items-center py-4">
         {/* Logo */}
         <div className="flex-shrink-0">
-          <a href="#" className="text-xl font-bold text-navy-900">
-            RADHEKRISHNA<br />
-            <span className="text-sm font-semibold text-gray-600">POLY PLAST</span>
+          <a href="#home" className="flex items-center gap-3 text-navy-900">
+            <img
+              src={rkppLogo}
+              alt="RKPP - PP Woven Fabric & Bags"
+              className="h-14 w-14 object-contain"
+            />
+            <span className="text-base sm:text-xl font-bold leading-tight">
+              RADHEKRISHNA<br />
+              <span className="text-xs sm:text-sm font-semibold text-gray-600">POLY PLAST</span>
+            </span>
           </a>
         </div>
 

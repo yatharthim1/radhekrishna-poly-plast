@@ -123,16 +123,19 @@ export default function Contact() {
           {/* Map / Location Visual */}
           <div>
             <div className="h-96 bg-gradient-to-br from-gray-300 to-gray-400 rounded-xl overflow-hidden shadow-lg">
-              {/* TODO: ADD GOOGLE MAPS URL */}
               <div className="w-full h-full flex items-center justify-center bg-navy-100">
                 <div className="text-center text-gray-600">
                   <p className="text-2xl mb-2">📍</p>
-                  <p className="text-lg font-semibold">Google Maps Integration</p>
-                  <p className="text-sm mt-2">Add your location map here</p>
-                  <p className="text-xs mt-4 px-4">
-                    [TODO: ADD GOOGLE MAPS URL]<br/>
-                    Or embed code: &lt;iframe src="maps URL"&gt;&lt;/iframe&gt;
-                  </p>
+                    <p className="text-lg font-semibold">Find Us on Google Maps</p>
+                    <p className="text-sm mt-2 px-4">Visit our Patna facility</p>
+                    <a
+                      href="https://maps.app.goo.gl/QKyPzHanfLed66zd7?g_st=ac"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-primary mt-5 text-sm"
+                    >
+                      Open Google Maps
+                    </a>
                 </div>
               </div>
             </div>
