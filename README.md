@@ -112,7 +112,7 @@ RadhekrishnaPolyPlast/
 
 ### Updating Contact Information
 
-Several TODO placeholders are used throughout the site. Replace them with actual information:
+Contact information is already integrated throughout the site. Update these files only when business details change:
 
 **Files to update:**
 - Header.jsx
@@ -120,13 +120,7 @@ Several TODO placeholders are used throughout the site. Replace them with actual
 - Contact.jsx
 - Footer.jsx
 
-**Search for and replace:**
-- `[TODO:CLIENT PHONE]` - Company phone number
-- `[TODO:CLIENT EMAIL]` - Company email address
-- `[TODO:WHATSAPP NUMBER]` - WhatsApp number (with country code)
-- `[TODO: COMPLETE BUSINESS ADDRESS]` - Full street address
-- `[TODO: BUSINESS HOURS]` - Operating hours
-- `[TODO: ADD GOOGLE MAPS URL]` - Google Maps embed link
+**Current enquiry contact:** `radhekrishanpolypacks@gmail.com`
 
 ### Adding Product Information
 
@@ -193,6 +187,8 @@ npm run build
 4. Select **Enquiry form notifications**
 5. Enter the email address for submissions
 6. Save
+
+Use `radhekrishanpolypacks@gmail.com` as the notification recipient. The enquiry form requires only the customer's name and phone number; email is optional.
 
 ### Step 4: Test the Form
 

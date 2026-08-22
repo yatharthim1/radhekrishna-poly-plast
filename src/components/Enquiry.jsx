@@ -12,6 +12,7 @@ export default function Enquiry() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,18 +22,18 @@ export default function Enquiry() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     // Validate required fields
-    if (!formData.name.trim() || !formData.phone.trim() || !formData.email.trim()) {
+    if (!formData.name.trim() || !formData.phone.trim()) {
       alert('Please fill in all required fields');
       return;
     }
 
     // Basic email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
+    if (formData.email.trim() && !emailRegex.test(formData.email)) {
       alert('Please enter a valid email address');
       return;
     }
@@ -44,7 +45,30 @@ export default function Enquiry() {
       return;
     }
 
-    setSubmitted(true);
+    setSubmitting(true);
+
+    try {
+      const submissionData = new URLSearchParams({
+        'form-name': 'business-enquiry',
+        ...formData
+      });
+
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: submissionData.toString()
+      });
+
+      if (!response.ok) {
+        throw new Error('Form submission failed');
+      }
+
+      setSubmitted(true);
+    } catch {
+      alert('We could not send your enquiry. Please call or message us directly.');
+    } finally {
+      setSubmitting(false);
+    }
     
     // Reset form after 3 seconds
     setTimeout(() => {
@@ -78,7 +102,9 @@ export default function Enquiry() {
           <form
             name="business-enquiry"
             method="POST"
+            action="/"
             data-netlify="true"
+            netlify-honeypot="bot-field"
             onSubmit={handleSubmit}
             className="bg-white text-gray-900 rounded-2xl p-8 md:p-12 shadow-2xl"
           >
@@ -151,7 +177,7 @@ export default function Enquiry() {
               {/* Email Address */}
               <div>
                 <label htmlFor="email" className="block text-sm font-semibold text-gray-900 mb-2">
-                  Email Address <span className="text-red-600">*</span>
+                  Email Address <span className="text-gray-500 font-normal">(Optional)</span>
                 </label>
                 <input
                   type="email"
@@ -159,7 +185,6 @@ export default function Enquiry() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  required
                   placeholder="your@email.com"
                   className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-navy-900 focus:outline-none transition"
                 />
@@ -218,9 +243,10 @@ export default function Enquiry() {
             <div>
               <button
                 type="submit"
+                disabled={submitting}
                 className="w-full btn-secondary py-4 text-lg font-bold"
               >
-                Submit Enquiry
+                {submitting ? 'Sending Enquiry...' : 'Submit Enquiry'}
               </button>
               <p className="text-sm text-gray-600 mt-4 text-center">
                 <span className="text-red-600">*</span> Required fields
