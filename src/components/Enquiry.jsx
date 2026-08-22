@@ -1,18 +1,21 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+
+const EMPTY_FORM = {
+  name: '',
+  company: '',
+  phone: '',
+  email: '',
+  product: '',
+  quantity: '',
+  message: ''
+};
 
 export default function Enquiry() {
-  const [formData, setFormData] = useState({
-    name: '',
-    company: '',
-    phone: '',
-    email: '',
-    product: '',
-    quantity: '',
-    message: ''
-  });
-
+  const [formData, setFormData] = useState(EMPTY_FORM);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
+  const formTopRef = useRef(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,24 +27,25 @@ export default function Enquiry() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+    setError('');
+
     // Validate required fields
     if (!formData.name.trim() || !formData.phone.trim()) {
-      alert('Please fill in all required fields');
+      setError('Please fill in all required fields.');
       return;
     }
 
     // Basic email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (formData.email.trim() && !emailRegex.test(formData.email)) {
-      alert('Please enter a valid email address');
+      setError('Please enter a valid email address.');
       return;
     }
 
     // Basic phone validation (Indian phone number)
     const phoneRegex = /^[0-9\s\-\+\(\)]{10,}$/;
     if (!phoneRegex.test(formData.phone.replace(/\s/g, ''))) {
-      alert('Please enter a valid phone number');
+      setError('Please enter a valid phone number.');
       return;
     }
 
@@ -63,26 +67,20 @@ export default function Enquiry() {
         throw new Error('Form submission failed');
       }
 
+      // Success: clear the form immediately and show the confirmation screen
+      setFormData(EMPTY_FORM);
       setSubmitted(true);
+      formTopRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } catch {
-      alert('We could not send your enquiry. Please call or message us directly.');
+      setError('We could not send your enquiry. Please try again, or call/WhatsApp us directly.');
     } finally {
       setSubmitting(false);
     }
-    
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setFormData({
-        name: '',
-        company: '',
-        phone: '',
-        email: '',
-        product: '',
-        quantity: '',
-        message: ''
-      });
-      setSubmitted(false);
-    }, 3000);
+  };
+
+  const handleSendAnother = () => {
+    setSubmitted(false);
+    setError('');
   };
 
   return (
@@ -98,7 +96,29 @@ export default function Enquiry() {
             </p>
           </div>
 
-          {/* Form */}
+          <div ref={formTopRef} />
+
+          {submitted ? (
+            /* Success screen — replaces the form after a successful submission */
+            <div className="bg-white text-gray-900 rounded-2xl p-8 md:p-12 shadow-2xl text-center">
+              <div className="mx-auto mb-6 flex items-center justify-center h-20 w-20 rounded-full bg-green-100">
+                <span className="text-4xl text-green-600">✓</span>
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold text-green-900 mb-3">
+                Thank you for your enquiry!
+              </h3>
+              <p className="text-gray-700 text-lg mb-8 max-w-md mx-auto">
+                We've received your details and our team will get in touch with you shortly regarding your requirements.
+              </p>
+              <button
+                onClick={handleSendAnother}
+                className="btn-secondary px-8 py-3"
+              >
+                Submit Another Enquiry
+              </button>
+            </div>
+          ) : (
+          /* Form */
           <form
             name="business-enquiry"
             method="POST"
@@ -114,12 +134,9 @@ export default function Enquiry() {
             {/* Honeypot spam protection */}
             <input type="hidden" name="bot-field" />
 
-            {submitted && (
-              <div className="mb-8 p-6 bg-green-50 border-2 border-green-500 rounded-lg">
-                <h3 className="text-xl font-bold text-green-900 mb-2">✓ Thank you for your enquiry!</h3>
-                <p className="text-green-800">
-                  Our team will get in touch with you shortly regarding your requirements.
-                </p>
+            {error && (
+              <div className="mb-8 p-4 bg-red-50 border-2 border-red-400 rounded-lg">
+                <p className="text-red-800 font-semibold">{error}</p>
               </div>
             )}
 
@@ -253,6 +270,7 @@ export default function Enquiry() {
               </p>
             </div>
           </form>
+          )}
 
           {/* Additional Info */}
           <div className="mt-12 pt-12 border-t border-white/20 text-center">
