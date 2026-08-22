@@ -1,23 +1,23 @@
 export default function Products() {
   const productCategories = [
     {
-      title: 'Woven Fabrics',
-      description: 'Wide range of fabric varieties available for different business requirements.',
+      title: 'PP Woven Fabrics',
+      description: 'Premium laminated and unlaminated rolls with water-resistant or breathable options for industrial wrap and bag conversion.',
       icon: '🧵',
     },
     {
-      title: 'Poly-Plastic Materials',
-      description: 'Materials used across industrial and packaging-related applications.',
+      title: 'Agricultural & Food Grain Sacks',
+      description: 'Heavy-duty bags for rice, wheat, pulses, sugar, and animal feed, available for dependable bulk packaging.',
       icon: '♻️',
     },
     {
-      title: 'Fabric Rolls',
-      description: 'Roll-based material supplied according to customer requirements.',
+      title: 'Industrial & Chemical Packaging',
+      description: 'High-tensile, burst-resistant sacks for cement, fertilizers, chemicals, and raw polymers.',
       icon: '📦',
     },
     {
-      title: 'Cut Fabric & Bag Applications',
-      description: 'Fabric can be processed through cutting workflows for bag-related applications.',
+      title: 'Laminated, Printed & Custom Bags',
+      description: 'Moisture-proof printed bags plus gusseted and custom geometries for handling, automated filling, and pallet stacking.',
       icon: '✂️',
     },
   ];
@@ -39,13 +39,8 @@ export default function Products() {
               <h3 className="text-2xl font-bold text-navy-900 mb-3">{category.title}</h3>
               <p className="text-gray-700 mb-6 leading-relaxed">{category.description}</p>
               
-              {/* TODO: Replace with actual product categories */}
-              <div className="space-y-2 text-sm text-gray-600 font-mono bg-gray-50 p-4 rounded">
-                {/* TODO: Add product images */}
-                {/* TODO: Add GSM/specification information */}
-                {/* TODO: Add available colours */}
-                {/* TODO: Add actual product applications */}
-                <p>Details to be added</p>
+              <div className="space-y-2 text-sm text-gray-600 bg-gray-50 p-4 rounded">
+                <p>Custom GSM, colors, dimensions, printing, and order sizes available on request.</p>
               </div>
             </div>
           ))}

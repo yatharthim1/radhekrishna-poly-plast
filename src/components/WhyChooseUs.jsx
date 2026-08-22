@@ -2,23 +2,23 @@ export default function WhyChooseUs() {
   const pillars = [
     {
       icon: '📊',
-      title: 'Wide Product Range',
-      description: 'A catalogue covering 180+ fabric varieties meeting diverse industrial and commercial needs.'
+      title: 'Regional Supply Network',
+      description: 'Fast, reliable distribution and delivery across Bihar, Jharkhand, Uttar Pradesh, and West Bengal.'
     },
     {
       icon: '⚖️',
-      title: 'Operational Accuracy',
-      description: 'Attention to roll quantities, net weight and meter information at every transaction stage.'
+      title: 'Uncompromising Durability',
+      description: 'Precision weaving, reinforced stitching, and high burst strength across our product lines.'
     },
     {
       icon: '🔄',
-      title: 'Flexible Processing',
-      description: 'Material can move through direct sales or cutting workflows depending on your requirements.'
+      title: 'Customization First',
+      description: 'Flexible order sizing, custom dimensions, GSM, and printing tailored to your requirements.'
     },
     {
       icon: '🎯',
-      title: 'Customer-Focused Supply',
-      description: 'Dispatch and documentation can be adapted to your specific business requirements.'
+      title: 'Integrated Operations',
+      description: 'From fabric sourcing to finished bag manufacturing, we support quality control and dependable bulk fulfillment.'
     },
   ];
 

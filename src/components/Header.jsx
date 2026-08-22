@@ -88,7 +88,7 @@ export default function Header() {
               Contact
             </button>
             <div className="pt-4 space-y-2 border-t">
-              <a href="tel:[TODO:CLIENT PHONE]" className="btn-outline text-sm w-full text-center">
+              <a href="tel:+919608257462" className="btn-outline text-sm w-full text-center">
                 Call Us
               </a>
               <button onClick={() => scrollToSection('enquiry')} className="btn-secondary text-sm w-full">

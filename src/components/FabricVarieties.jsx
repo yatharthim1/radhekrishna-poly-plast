@@ -19,7 +19,7 @@ export default function FabricVarieties() {
 
           {/* Description */}
           <p className="text-xl text-gray-300 mb-12 leading-relaxed">
-            Supported through an organized catalogue and roll-based inventory workflow. With decades of experience managing diverse fabric materials, we provide reliable access to a broad spectrum of solutions.
+            Supported through an organized catalogue and roll-based inventory workflow, our 180+ fabric varieties provide reliable access to a broad spectrum of woven poly solutions.
           </p>
 
           {/* Features */}

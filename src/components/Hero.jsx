@@ -19,12 +19,12 @@ export default function Hero() {
         <div className="max-w-2xl mx-auto text-center md:text-left md:max-w-4xl">
           {/* Main Headline */}
           <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6 animate-fade-in-up">
-            Reliable Fabric &<br />Poly-Plastic Solutions
+            PP Woven Fabrics &<br />Industrial Packaging Bags
           </h1>
 
           {/* Supporting Text */}
           <p className="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed animate-fade-in-up animation-delay-100">
-            Radhekrishna Poly Plast, based in Patna, Bihar, works with a wide range of fabric varieties and roll-based material workflows, supporting cutting, sales and dispatch requirements with a focus on accuracy and dependable service.
+            Radhekrishna Poly Plast is a trusted trader of premium PP woven fabrics and manufacturer of high-strength industrial packaging bags, serving businesses across Eastern India with dependable bulk fulfillment.
           </p>
 
           {/* CTA Buttons */}

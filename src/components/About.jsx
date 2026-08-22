@@ -15,11 +15,11 @@ export default function About() {
           {/* Content */}
           <div className="space-y-6">
             <p className="text-lg text-gray-700 leading-relaxed">
-              With a broad catalogue of fabric varieties and an organized approach to roll handling, cutting and dispatch, Radhekrishna Poly Plast is equipped to serve diverse business requirements from its Patna unit.
+                Radhekrishna Poly Plast is a leading trader of premium PP Woven Fabrics and a trusted manufacturer of high-strength industrial packaging bags. Built on product quality and regional supply reliability, we provide robust packaging solutions engineered to withstand heavy loads, moisture, and harsh transport conditions for businesses across Eastern India.
             </p>
 
             <p className="text-lg text-gray-700 leading-relaxed">
-              Our operational foundation rests on structured inventory management, precise quantity and weight tracking, and a commitment to understanding customer-specific requirements. Whether your business needs direct fabric supply or specialized cutting services, we bring professional discipline to every transaction.
+                We deliver end-to-end woven poly solutions, from sourcing and distributing high-grade woven fabric rolls to manufacturing finished, custom-spec packaging bags. Our integrated operations support seamless material sourcing, strict quality control, and dependable bulk fulfillment for agricultural, commercial, and industrial clients.
             </p>
 
             <div className="pt-4">
@@ -28,29 +28,29 @@ export default function About() {
                 <li className="flex items-start gap-3">
                   <span className="text-accent-orange font-bold text-xl mt-1">✓</span>
                   <div>
-                    <p className="font-semibold text-gray-900">Wide Product Variety</p>
-                    <p className="text-gray-600">Access to 180+ fabric varieties for diverse applications</p>
+                    <p className="font-semibold text-gray-900">Premium PP Woven Fabrics</p>
+                    <p className="text-gray-600">Laminated, unlaminated, UV-stabilized, and custom GSM fabric options</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-accent-orange font-bold text-xl mt-1">✓</span>
                   <div>
-                    <p className="font-semibold text-gray-900">Organized Roll-Based Handling</p>
-                    <p className="text-gray-600">Structured tracking by roll number, weight and meter information</p>
+                    <p className="font-semibold text-gray-900">High-Strength Bag Manufacturing</p>
+                    <p className="text-gray-600">Custom bags for agricultural, food grain, industrial, and chemical packaging</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-accent-orange font-bold text-xl mt-1">✓</span>
                   <div>
-                    <p className="font-semibold text-gray-900">Flexible Processing</p>
-                    <p className="text-gray-600">Direct sales and in-factory cutting services available</p>
+                    <p className="font-semibold text-gray-900">Customization First</p>
+                    <p className="text-gray-600">Flexible dimensions, GSM, colors, printing, and order sizing</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-accent-orange font-bold text-xl mt-1">✓</span>
                   <div>
-                    <p className="font-semibold text-gray-900">Customer-Focused Supply</p>
-                    <p className="text-gray-600">Dispatch documentation adapted to your requirements</p>
+                    <p className="font-semibold text-gray-900">Regional Supply Reliability</p>
+                    <p className="text-gray-600">Bulk fulfillment across Bihar, Jharkhand, Uttar Pradesh, and West Bengal</p>
                   </div>
                 </li>
               </ul>
