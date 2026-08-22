@@ -1,0 +1,257 @@
+import { useState } from 'react';
+
+export default function Enquiry() {
+  const [formData, setFormData] = useState({
+    name: '',
+    company: '',
+    phone: '',
+    email: '',
+    product: '',
+    quantity: '',
+    message: ''
+  });
+
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    // Validate required fields
+    if (!formData.name.trim() || !formData.phone.trim() || !formData.email.trim()) {
+      alert('Please fill in all required fields');
+      return;
+    }
+
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      alert('Please enter a valid email address');
+      return;
+    }
+
+    // Basic phone validation (Indian phone number)
+    const phoneRegex = /^[0-9\s\-\+\(\)]{10,}$/;
+    if (!phoneRegex.test(formData.phone.replace(/\s/g, ''))) {
+      alert('Please enter a valid phone number');
+      return;
+    }
+
+    setSubmitted(true);
+    
+    // Reset form after 3 seconds
+    setTimeout(() => {
+      setFormData({
+        name: '',
+        company: '',
+        phone: '',
+        email: '',
+        product: '',
+        quantity: '',
+        message: ''
+      });
+      setSubmitted(false);
+    }, 3000);
+  };
+
+  return (
+    <section id="enquiry" className="section-padding bg-gradient-to-br from-navy-800 to-navy-900 text-white">
+      <div className="container-max">
+        <div className="max-w-2xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Looking for Fabric or Poly-Plastic Solutions?
+            </h2>
+            <p className="text-xl text-gray-300">
+              Tell us what you need and our team can get in touch with you regarding your requirement.
+            </p>
+          </div>
+
+          {/* Form */}
+          <form
+            name="business-enquiry"
+            method="POST"
+            data-netlify="true"
+            onSubmit={handleSubmit}
+            className="bg-white text-gray-900 rounded-2xl p-8 md:p-12 shadow-2xl"
+          >
+            {/* Hidden form name field for Netlify */}
+            <input type="hidden" name="form-name" value="business-enquiry" />
+            
+            {/* Honeypot spam protection */}
+            <input type="hidden" name="bot-field" />
+
+            {submitted && (
+              <div className="mb-8 p-6 bg-green-50 border-2 border-green-500 rounded-lg">
+                <h3 className="text-xl font-bold text-green-900 mb-2">✓ Thank you for your enquiry!</h3>
+                <p className="text-green-800">
+                  Our team will get in touch with you shortly regarding your requirements.
+                </p>
+              </div>
+            )}
+
+            <div className="grid md:grid-cols-2 gap-6 mb-6">
+              {/* Full Name */}
+              <div>
+                <label htmlFor="name" className="block text-sm font-semibold text-gray-900 mb-2">
+                  Full Name <span className="text-red-600">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  placeholder="Your full name"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-navy-900 focus:outline-none transition"
+                />
+              </div>
+
+              {/* Company Name */}
+              <div>
+                <label htmlFor="company" className="block text-sm font-semibold text-gray-900 mb-2">
+                  Company Name
+                </label>
+                <input
+                  type="text"
+                  id="company"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleChange}
+                  placeholder="Your company name"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-navy-900 focus:outline-none transition"
+                />
+              </div>
+
+              {/* Phone Number */}
+              <div>
+                <label htmlFor="phone" className="block text-sm font-semibold text-gray-900 mb-2">
+                  Phone Number <span className="text-red-600">*</span>
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                  placeholder="+91 XXXXX XXXXX"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-navy-900 focus:outline-none transition"
+                />
+              </div>
+
+              {/* Email Address */}
+              <div>
+                <label htmlFor="email" className="block text-sm font-semibold text-gray-900 mb-2">
+                  Email Address <span className="text-red-600">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  placeholder="your@email.com"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-navy-900 focus:outline-none transition"
+                />
+              </div>
+
+              {/* Product Required */}
+              <div>
+                <label htmlFor="product" className="block text-sm font-semibold text-gray-900 mb-2">
+                  Product / Material Required
+                </label>
+                <input
+                  type="text"
+                  id="product"
+                  name="product"
+                  value={formData.product}
+                  onChange={handleChange}
+                  placeholder="e.g., Woven Fabric, Poly-Plastic Material"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-navy-900 focus:outline-none transition"
+                />
+              </div>
+
+              {/* Quantity / Requirement */}
+              <div>
+                <label htmlFor="quantity" className="block text-sm font-semibold text-gray-900 mb-2">
+                  Quantity / Requirement
+                </label>
+                <input
+                  type="text"
+                  id="quantity"
+                  name="quantity"
+                  value={formData.quantity}
+                  onChange={handleChange}
+                  placeholder="e.g., 100 kg, 500 meters"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-navy-900 focus:outline-none transition"
+                />
+              </div>
+            </div>
+
+            {/* Message */}
+            <div className="mb-8">
+              <label htmlFor="message" className="block text-sm font-semibold text-gray-900 mb-2">
+                Additional Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                placeholder="Tell us more about your requirements..."
+                rows="5"
+                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-navy-900 focus:outline-none transition resize-none"
+              ></textarea>
+            </div>
+
+            {/* Submit Button */}
+            <div>
+              <button
+                type="submit"
+                className="w-full btn-secondary py-4 text-lg font-bold"
+              >
+                Submit Enquiry
+              </button>
+              <p className="text-sm text-gray-600 mt-4 text-center">
+                <span className="text-red-600">*</span> Required fields
+              </p>
+            </div>
+          </form>
+
+          {/* Additional Info */}
+          <div className="mt-12 pt-12 border-t border-white/20 text-center">
+            <p className="text-gray-300 text-lg mb-6">
+              Prefer to reach out directly?
+            </p>
+            <div className="flex flex-col md:flex-row gap-4 justify-center">
+              <a
+                href="tel:+919608257462"
+                className="btn-secondary inline-block"
+              >
+                ☎ Call Us
+              </a>
+              <a
+                href="https://wa.me/919608257462"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline border-white text-white hover:bg-white hover:text-navy-900 inline-block"
+              >
+                💬 WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

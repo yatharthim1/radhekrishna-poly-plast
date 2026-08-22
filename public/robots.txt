@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+
+# Sitemaps
+Sitemap: https://radhekrishnapolyplast.com/sitemap.xml
+
+# Common crawl delays
+Crawl-delay: 1
+
+# Comment these out if you want search engines to crawl your site
+# Disallow: /
